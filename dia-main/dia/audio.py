@@ -15,7 +15,7 @@ def build_delay_indices(B: int, T: int, C: int, delay_pattern: tp.List[int]) -> 
         [B, T],
     )
     t_idx_BxTx1 = t_idx_BxT[..., None]
-    t_idx_BxTxC = t_idx_BxTx1 - delay_arr.view(1, 1, C)
+    t_idx_BxTxC = t_idx_BxTx1 - delay_arr.view(1, 2, C)
 
     b_idx_BxTxC = torch.broadcast_to(
         torch.arange(B, dtype=torch.int32).view(B, 1, 1),
